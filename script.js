@@ -1,23 +1,29 @@
 //your code here
 
-
 function sortedBand(arr) {
     const articles = /^(a|an|the)\s+/i;
 
     arr.sort((a, b) => {
-        const nameA = a.replace(articles, "").trim();
-        const nameB = b.replace(articles, "").trim();
-
-        return nameA.localeCompare(nameB);
+        return a.replace(articles, "").localeCompare(
+            b.replace(articles, "")
+        );
     });
 
-    const bandList = document.getElementById("band");
+    let bandList = document.getElementById("band");
+
+    if (!bandList) {
+        bandList = document.createElement("ul");
+        bandList.id = "band";
+        document.body.appendChild(bandList);
+    }
+
     bandList.innerHTML = "";
 
-    arr.forEach((band) => {
+    arr.forEach(band => {
         const li = document.createElement("li");
         li.textContent = band;
         bandList.appendChild(li);
     });
 }
-sortedBand(touristSpots;
+
+sortedBand(touristSpots);
